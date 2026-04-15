@@ -350,7 +350,7 @@ body {
     text-align: center;
 }
 .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-.footer-logo { height: 52px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.85); }
+.footer-logo { height: 60px; object-fit: contain; filter: invert(1); mix-blend-mode: screen; opacity: 0.85; }
 .footer-tagline { color: rgba(255,255,255,0.55); font-size: 14px; font-weight: 600; }
 .footer-copy { color: rgba(255,255,255,0.3); font-size: 12px; }
 
