@@ -14,32 +14,55 @@ document.addEventListener('DOMContentLoaded', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    /* --- Formulario Box de 3 → WhatsApp --- */
+    /* --- Lógica de Contadores (Carrito) --- */
+    const minusBtns = document.querySelectorAll('.btn-minus');
+    const plusBtns = document.querySelectorAll('.btn-plus');
+
+    minusBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = document.getElementById(btn.dataset.target);
+            let val = parseInt(input.value) || 0;
+            if (val > 0) input.value = val - 1;
+        });
+    });
+
+    plusBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = document.getElementById(btn.dataset.target);
+            let val = parseInt(input.value) || 0;
+            input.value = val + 1;
+        });
+    });
+
+    /* --- Formulario Pedido → WhatsApp --- */
     const form = document.getElementById('whatsapp-order-form');
     if (!form) return;
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Recopilar selecciones
-        const cookies = [...document.querySelectorAll('.cookie-select')];
+        const inputs = [...document.querySelectorAll('.qty-input')];
+        let totalGalletas = 0;
+        let lineasPedido = [];
 
-        // Validar que todo esté seleccionado
-        const allSelected = cookies.every(s => s.value);
-        if (!allSelected) {
-            alert('🍪 Por favor seleccioná tus 3 galletas antes de continuar.');
+        inputs.forEach(input => {
+            const qty = parseInt(input.value) || 0;
+            if (qty > 0) {
+                totalGalletas += qty;
+                const flavor = input.dataset.flavor;
+                lineasPedido.push(`• ${qty}x ${flavor}`);
+            }
+        });
+
+        if (totalGalletas === 0) {
+            alert('🍪 Por favor seleccioná al menos una galleta para armar tu pedido.');
             return;
         }
 
-        // Armar el pedido
-        const galletas = cookies.map((cookie, i) =>
-            `🍪 Galleta ${i + 1}: ${cookie.value}`
-        );
-
         const mensaje =
             `¡Hola! Quiero hacer un encargo de Matty's Cookie 🙌\n\n` +
-            `*🎁 Mi Box de 3 Galletas:*\n` +
-            galletas.join('\n') +
+            `*📝 Mi Pedido (${totalGalletas} galletas en total):*\n` +
+            lineasPedido.join('\n') +
             `\n\n¿Cuál es el precio y cómo coordinamos? ¡Gracias!`;
 
         const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(mensaje)}`;

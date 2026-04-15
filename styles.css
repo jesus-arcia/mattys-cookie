@@ -284,61 +284,55 @@ body {
     background: linear-gradient(135deg, #F0EAF8 0%, var(--cream) 100%);
     padding: 100px 48px;
 }
-.box-builder {
-    display: flex; gap: 24px; justify-content: center;
-    flex-wrap: wrap; max-width: 1100px; margin: 0 auto 40px;
-}
-.cookie-select-card {
+.cart-builder {
+    display: flex; flex-direction: column; gap: 16px;
+    max-width: 600px; margin: 0 auto 40px;
     background: var(--white);
-    border: 2px solid rgba(197,196,232,0.5);
+    border: 2px solid rgba(197,196,232,0.4);
     border-radius: var(--radius-lg);
-    padding: 36px 28px;
-    flex: 1; min-width: 280px; max-width: 320px;
-    position: relative;
+    padding: 32px;
     box-shadow: var(--shadow-card);
-    transition: border-color 0.25s, transform 0.25s;
 }
-.cookie-select-card:hover {
-    border-color: var(--caramel);
-    transform: translateY(-4px);
+.flavor-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(197,196,232,0.3);
 }
-.cookie-badge {
-    position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
-    width: 36px; height: 36px;
+.flavor-row:last-child {
+    border-bottom: none; padding-bottom: 0;
+}
+.flavor-info h3 {
+    font-weight: 800; font-size: 18px; color: var(--charcoal); margin-bottom: 4px;
+}
+.flavor-info p {
+    font-size: 13px; color: #7a7a90;
+}
+.flavor-controls {
+    display: flex; align-items: center; gap: 10px;
+}
+.qty-btn {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 2px solid var(--caramel); background: var(--white);
+    color: var(--caramel-dark); font-size: 20px; font-weight: 800;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    line-height: 1; padding: 0 0 2px 0;
+}
+.qty-btn:hover {
     background: var(--caramel); color: var(--white);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 16px;
-    box-shadow: 0 4px 12px rgba(232,168,74,0.4);
 }
-.cookie-select-card h3 {
-    font-weight: 800; font-size: 18px;
-    text-align: center; margin-bottom: 24px;
-    color: var(--charcoal);
+.qty-input {
+    width: 32px; text-align: center; font-size: 17px; font-weight: 800;
+    border: none; background: transparent; color: var(--charcoal);
+    pointer-events: none;
 }
-.form-group { margin-bottom: 18px; }
-.form-group label {
-    display: block; font-weight: 700; font-size: 13px;
-    color: #7a7a90; margin-bottom: 8px; letter-spacing: 0.5px;
-    text-transform: uppercase;
+/* Hide clear x button / spinners in input number */
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none; margin: 0;
 }
-.form-group select {
-    width: 100%; padding: 12px 16px;
-    border: 1.5px solid rgba(197,196,232,0.6);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-body); font-size: 15px; font-weight: 600;
-    color: var(--charcoal); background: var(--cream);
-    appearance: none;
-    cursor: pointer;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23A09ECC' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 36px;
-}
-.form-group select:focus {
-    outline: none;
-    border-color: var(--caramel);
-    box-shadow: 0 0 0 3px rgba(232,168,74,0.2);
+.qty-input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .submit-container { text-align: center; }
@@ -386,6 +380,8 @@ body {
     .hero-image-container { max-width: 340px; }
 
     .about-section, .menu-section, .order-section { padding: 70px 24px; }
-    .values-row, .menu-grid, .box-builder { flex-direction: column; align-items: center; }
-    .value-card, .menu-item, .cookie-select-card { max-width: 100%; min-width: unset; width: 100%; }
+    .values-row, .menu-grid { flex-direction: column; align-items: center; }
+    .value-card, .menu-item { max-width: 100%; min-width: unset; width: 100%; }
+    .cart-builder { padding: 24px 16px; }
+    .flavor-info h3 { font-size: 16px; }
 }
