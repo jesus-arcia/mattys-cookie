@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const inputs = [...document.querySelectorAll('.qty-input')];
         let totalGalletas = 0;
+        let totalPrecio = 0;
         let lineasPedido = [];
 
         inputs.forEach(input => {
@@ -50,7 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (qty > 0) {
                 totalGalletas += qty;
                 const flavor = input.dataset.flavor;
-                lineasPedido.push(`• ${qty}x ${flavor}`);
+                const price = parseInt(input.dataset.price) || 0;
+                const subtotal = qty * price;
+                totalPrecio += subtotal;
+                
+                // Formateo estilo 5.000
+                const printPrice = new Intl.NumberFormat('es-AR').format(price);
+                const printSubtotal = new Intl.NumberFormat('es-AR').format(subtotal);
+                
+                lineasPedido.push(`• ${qty}x ${flavor} ($${printPrice} c/u = $${printSubtotal})`);
             }
         });
 
@@ -59,11 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const printTotal = new Intl.NumberFormat('es-AR').format(totalPrecio);
+
         const mensaje =
             `¡Hola! Quiero hacer un encargo de Matty's Cookie 🙌\n\n` +
             `*📝 Mi Pedido (${totalGalletas} galletas en total):*\n` +
             lineasPedido.join('\n') +
-            `\n\n¿Cuál es el precio y cómo coordinamos? ¡Gracias!`;
+            `\n\n*💰 Total a pagar:* $${printTotal} ARS` +
+            `\n\n¿Cómo coordinamos el pago y la entrega? ¡Gracias!`;
 
         const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(mensaje)}`;
         window.open(url, '_blank');
