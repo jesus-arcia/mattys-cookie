@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" width="420" height="120">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Galleta círculo (cookie) -->
+  <circle cx="56" cy="60" r="48" fill="#E8A84A"/>
+  <!-- Textura borde galleta -->
+  <circle cx="56" cy="60" r="48" fill="none" stroke="#C8843A" stroke-width="3" stroke-dasharray="6 4"/>
+  <!-- Chips de chocolate -->
+  <ellipse cx="42" cy="48" rx="6" ry="4.5" fill="#3D2008" transform="rotate(-15 42 48)"/>
+  <ellipse cx="66" cy="44" rx="5" ry="4" fill="#3D2008" transform="rotate(10 66 44)"/>
+  <ellipse cx="38" cy="68" rx="5.5" ry="4" fill="#3D2008" transform="rotate(-20 38 68)"/>
+  <ellipse cx="68" cy="68" rx="6" ry="4.5" fill="#3D2008" transform="rotate(15 68 68)"/>
+  <ellipse cx="55" cy="76" rx="5" ry="3.5" fill="#3D2008" transform="rotate(5 55 76)"/>
+  <!-- Brillo galleta -->
+  <ellipse cx="38" cy="38" rx="10" ry="6" fill="rgba(255,255,255,0.2)" transform="rotate(-30 38 38)"/>
+
+  <!-- Nombre "La Cookeria" -->
+  <!-- "La" más pequeño arriba -->
+  <text x="126" y="47" 
+        font-family="Georgia, 'Times New Roman', serif" 
+        font-size="26" 
+        font-style="italic"
+        font-weight="400"
+        fill="#C5C4E8"
+        letter-spacing="3">La</text>
+
+  <!-- "Cookeria" grande principal -->
+  <text x="118" y="92" 
+        font-family="Georgia, 'Times New Roman', serif" 
+        font-size="54" 
+        font-weight="700"
+        fill="#1E1E2E"
+        letter-spacing="-1">Cookeria</text>
+
+  <!-- Detalle decorativo: línea ondulada rosa bajo el texto -->
+  <path d="M118 102 Q170 110 222 102 Q274 94 326 102" 
+        stroke="#F2A8B5" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Puntitos decorativos arriba del nombre -->
+  <circle cx="136" cy="22" r="3" fill="#F2A8B5"/>
+  <circle cx="152" cy="18" r="2.5" fill="#E8A84A"/>
+  <circle cx="168" cy="22" r="3" fill="#C5C4E8"/>
+</svg>
