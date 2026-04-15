@@ -4,7 +4,7 @@
    ============================================================ */
 
 // Número de WhatsApp de Matty's Cookie (sin + ni espacios)
-const WA_NUMBER = '5491173587842';
+const WA_NUMBER = '5491126949587';
 
 document.addEventListener('DOMContentLoaded', () => {
 
