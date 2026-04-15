@@ -51,7 +51,7 @@ body {
 .navbar.scrolled { box-shadow: 0 4px 20px rgba(30,30,46,0.08); }
 
 .logo-container { display: flex; align-items: center; }
-.brand-logo { height: 54px; object-fit: contain; }
+.brand-logo { height: 75px; object-fit: contain; mix-blend-mode: multiply; }
 
 .nav-links {
     list-style: none;
@@ -209,7 +209,7 @@ body {
     max-width: 860px; margin: 0 auto;
     text-align: center;
 }
-.about-icon-img { height: 72px; object-fit: contain; margin-bottom: 20px; filter: drop-shadow(0 4px 12px rgba(30, 30, 46, 0.1)); }
+.about-icon-img { height: 140px; object-fit: contain; margin-bottom: 24px; mix-blend-mode: multiply; }
 .about-inner h2 {
     font-family: var(--font-body); font-weight: 800; font-size: 42px;
     color: var(--charcoal); margin-bottom: 20px;
