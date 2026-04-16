@@ -271,10 +271,7 @@ body {
     padding: 28px; display: flex; justify-content: center; align-items: center;
     height: 220px;
 }
-.menu-img-wrap img {
-    width: 100%; max-width: 200px; object-fit: contain;
-    filter: drop-shadow(0 8px 20px rgba(30,30,46,0.15));
-}
+.menu-img-wrap img { width: 100%; max-width: 200px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; filter: drop-shadow(0 8px 16px rgba(30,30,46,0.15)); }
 .menu-info { padding: 24px; }
 .menu-info h3 { font-weight: 800; font-size: 20px; margin-bottom: 8px; color: var(--charcoal); }
 .menu-info p  { font-size: 14px; color: #7a7a90; line-height: 1.6; }
