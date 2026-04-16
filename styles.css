@@ -281,6 +281,45 @@ body {
     background: linear-gradient(135deg, #F0EAF8 0%, var(--cream) 100%);
     padding: 100px 48px;
 }
+
+.customer-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--charcoal);
+    margin-left: 4px;
+}
+
+.input-group input {
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    border: 2px solid rgba(197, 196, 232, 0.4);
+    background: var(--white);
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--charcoal);
+    transition: all 0.2s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--caramel);
+    box-shadow: 0 0 0 4px rgba(232, 168, 74, 0.1);
+}
+
 .cart-builder {
     display: flex; flex-direction: column; gap: 16px;
     max-width: 600px; margin: 0 auto 40px;

@@ -70,12 +70,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const printTotal = new Intl.NumberFormat('es-AR').format(totalPrecio);
 
+        // Obtener datos del cliente
+        const customerName = document.getElementById('customer-name').value;
+        let customerPhone = document.getElementById('customer-phone').value;
+
+        // Limpiar teléfono (solo números y +)
+        customerPhone = customerPhone.replace(/[^\d+]/g, '');
+        if (!customerPhone.startsWith('+')) {
+            customerPhone = '+' + customerPhone;
+        }
+
         const mensaje =
             `¡Hola! Quiero hacer un encargo de Matty's Cookie 🙌\n\n` +
+            `*👤 Cliente:* ${customerName}\n` +
+            `*📱 WhatsApp:* ${customerPhone}\n\n` +
             `*📝 Mi Pedido (${totalGalletas} galletas en total):*\n` +
             lineasPedido.join('\n');
 
         const pedidoData = {
+            nombre: customerName,
+            telefono_cliente: customerPhone,
             detalles: mensaje,
             total: `$${printTotal} ARS`,
             galletas_total: totalGalletas,
