@@ -75,21 +75,26 @@ document.addEventListener('DOMContentLoaded', () => {
             `*📝 Mi Pedido (${totalGalletas} galletas en total):*\n` +
             lineasPedido.join('\n');
 
-        // Asignar valores a los inputs ocultos para Netlify
-        document.getElementById('pedido-detalles').value = mensaje;
-        document.getElementById('pedido-total').value = `$${printTotal} ARS`;
+        const pedidoData = {
+            detalles: mensaje,
+            total: `$${printTotal} ARS`,
+            galletas_total: totalGalletas,
+            fecha: new Date().toLocaleString()
+        };
 
-        // Preparar envío a Netlify
-        const formData = new FormData(form);
         const submitBtn = document.getElementById('submit-btn');
         const originalText = submitBtn.innerHTML;
         
         submitBtn.innerHTML = 'Enviando Pedido... ⏳';
         submitBtn.disabled = true;
 
-        fetch('/', {
+        // Enviar directamente a n8n
+        fetch('https://alumnouno.app.n8n.cloud/webhook-test/mattys-cookie', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(pedidoData)
         })
         .then(response => {
             if (response.ok) {
@@ -100,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
         .catch(error => {
+            console.error('Error:', error);
             alert('❌ Hubo un inconveniente al enviar tu pedido. Por favor intenta de nuevo.');
         })
         .finally(() => {
