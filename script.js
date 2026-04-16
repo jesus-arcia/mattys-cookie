@@ -73,12 +73,39 @@ document.addEventListener('DOMContentLoaded', () => {
         const mensaje =
             `¡Hola! Quiero hacer un encargo de Matty's Cookie 🙌\n\n` +
             `*📝 Mi Pedido (${totalGalletas} galletas en total):*\n` +
-            lineasPedido.join('\n') +
-            `\n\n*💰 Total a pagar:* $${printTotal} ARS` +
-            `\n\n¿Cómo coordinamos el pago y la entrega? ¡Gracias!`;
+            lineasPedido.join('\n');
 
-        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(mensaje)}`;
-        window.open(url, '_blank');
+        // Asignar valores a los inputs ocultos para Netlify
+        document.getElementById('pedido-detalles').value = mensaje;
+        document.getElementById('pedido-total').value = `$${printTotal} ARS`;
+
+        // Preparar envío a Netlify
+        const formData = new FormData(form);
+        const submitBtn = document.getElementById('submit-btn');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = 'Enviando Pedido... ⏳';
+        submitBtn.disabled = true;
+
+        fetch('/', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('✅ ¡Tu pedido fue enviado con éxito!\nNos pondremos en contacto contigo pronto.');
+                form.reset();
+            } else {
+                throw new Error('Error en el envío');
+            }
+        })
+        .catch(error => {
+            alert('❌ Hubo un inconveniente al enviar tu pedido. Por favor intenta de nuevo.');
+        })
+        .finally(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        });
     });
 
 });

@@ -191,7 +191,11 @@
             <p class="section-sub">Elegí el sabor y la cantidad de galletas que quieras. Las recibís recién horneadas en nuestra caja premium.</p>
         </div>
 
-        <form id="whatsapp-order-form">
+        <form id="whatsapp-order-form" name="Order" data-netlify="true" method="POST">
+            <input type="hidden" name="form-name" value="Order">
+            <input type="hidden" id="pedido-detalles" name="Detalle_Pedido">
+            <input type="hidden" id="pedido-total" name="Total_ARS">
+            
             <div class="cart-builder">
                 <!-- Sabor 1 -->
                 <div class="flavor-row">
