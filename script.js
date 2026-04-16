@@ -85,7 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
             `*👤 Cliente:* ${customerName}\n` +
             `*📱 WhatsApp:* ${customerPhone}\n\n` +
             `*📝 Mi Pedido (${totalGalletas} galletas en total):*\n` +
-            lineasPedido.join('\n');
+            lineasPedido.join('\n') +
+            `\n\n*💰 Total a pagar:* $${printTotal} ARS`;
 
         const pedidoData = {
             nombre: customerName,
