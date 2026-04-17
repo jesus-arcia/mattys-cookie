@@ -267,11 +267,37 @@ body {
     box-shadow: 0 16px 40px rgba(30,30,46,0.14);
 }
 .menu-img-wrap {
-    background: linear-gradient(135deg, #F5EEF8, #F0EAF8);
-    padding: 28px; display: flex; justify-content: center; align-items: center;
-    height: 220px;
+    background-color: #fcf8f1; /* Color papel manteca suave */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 240px;
+    padding: 20px;
 }
-.menu-img-wrap img { width: 100%; max-width: 200px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; filter: drop-shadow(0 8px 16px rgba(30,30,46,0.15)); }
+
+.menu-img-wrap::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('./assets/mattys_cookie_logo_ny.png');
+    background-size: 80px;
+    background-repeat: repeat;
+    opacity: 0.12; /* Logo muy sutil como marca de agua */
+    z-index: 1;
+}
+
+.menu-img-wrap img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply; /* Desvanece el fondo blanco de la foto */
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
 .menu-info { padding: 24px; }
 .menu-info h3 { font-weight: 800; font-size: 20px; margin-bottom: 8px; color: var(--charcoal); }
 .menu-info p  { font-size: 14px; color: #7a7a90; line-height: 1.6; }
