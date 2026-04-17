@@ -420,4 +420,8 @@ body {
     .value-card, .menu-item { max-width: 100%; min-width: unset; width: 100%; }
     .cart-builder { padding: 24px 16px; }
     .flavor-info h3 { font-size: 16px; }
+    .customer-info-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 }
