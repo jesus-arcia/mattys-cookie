@@ -298,6 +298,12 @@ body {
     z-index: 2;
     transition: transform 0.3s ease;
 }
+
+.red-velvet-img {
+    filter: hue-rotate(-45deg) saturate(2.3) brightness(0.75) contrast(1.1) multiply;
+    mix-blend-mode: multiply;
+}
+
 .menu-info { padding: 24px; }
 .menu-info h3 { font-weight: 800; font-size: 20px; margin-bottom: 8px; color: var(--charcoal); }
 .menu-info p  { font-size: 14px; color: #7a7a90; line-height: 1.6; }
