@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerHTML = 'Enviando Pedido... ⏳';
         submitBtn.disabled = true;
 
-        // Enviar directamente a n8n
-        fetch('https://alumnouno.app.n8n.cloud/webhook-test/mattys-cookie', {
+        // Enviar directamente a n8n (Producción)
+        fetch('https://alumnouno.app.n8n.cloud/webhook/mattys-cookie', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
