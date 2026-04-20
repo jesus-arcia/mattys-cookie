@@ -275,6 +275,19 @@ body {
     align-items: center;
     height: 240px;
     padding: 20px;
+    z-index: 0;
+}
+
+/* Capa para reducir el reflejo del flash en las fotos */
+.menu-img-wrap::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 140%; height: 140%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0) 60%);
+    pointer-events: none;
+    z-index: 3;
 }
 
 .menu-img-wrap::before {
@@ -282,21 +295,26 @@ body {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background-image: url('./assets/mattys_cookie_logo_ny.png');
-    background-size: 80px;
+    background-size: 140px;
     background-repeat: repeat;
-    opacity: 0.12; /* Logo muy sutil como marca de agua */
+    opacity: 0.08; /* Logo muy sutil como marca de agua en el papel */
     z-index: 1;
+    transform: rotate(-15deg);
 }
 
-.menu-img-wrap img {
+.real-cookie-img {
     width: 100%;
-    max-width: 200px;
-    height: auto;
+    max-width: 240px;
+    height: 240px;
     object-fit: contain;
-    mix-blend-mode: multiply; /* Desvanece el fondo blanco de la foto */
     position: relative;
     z-index: 2;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15)) brightness(0.88) contrast(1.12); /* Brillo reducido para atenuar flash */
+}
+
+.menu-item:hover .real-cookie-img {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .red-velvet-img {
