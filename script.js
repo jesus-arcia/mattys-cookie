@@ -113,7 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => {
             if (response.ok) {
-                alert('✅ ¡Tu pedido fue enviado con éxito!\nNos pondremos en contacto contigo pronto.');
+                // REDIRECCIÓN A WHATSAPP (Refuerzo Ragnar)
+                const encodedMessage = encodeURIComponent(mensaje);
+                const whatsappUrl = `https://wa.me/${WA_NUMBER}?text=${encodedMessage}`;
+                
+                // Abrir WhatsApp en una nueva pestaña (o misma para móvil)
+                window.open(whatsappUrl, '_blank');
+
+                alert('✅ ¡Pedido registrado con éxito!\nTe hemos redirigido a WhatsApp para confirmar el envío.');
                 form.reset();
             } else {
                 throw new Error('Error en el envío');
