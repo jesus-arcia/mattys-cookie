@@ -475,3 +475,121 @@ body {
         gap: 15px;
     }
 }
+
+/* ── MODALES ── */
+.modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(30, 30, 46, 0.65);
+    backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+    padding: 20px;
+}
+.modal-overlay.active {
+    display: flex;
+    animation: fadeInOverlay 0.25s ease;
+}
+@keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.modal-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 40px 36px;
+    max-width: 480px; width: 100%;
+    box-shadow: 0 24px 60px rgba(30, 30, 46, 0.25);
+    animation: slideUpCard 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 90vh; overflow-y: auto;
+}
+@keyframes slideUpCard {
+    from { opacity: 0; transform: translateY(30px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+.modal-header { text-align: center; margin-bottom: 24px; }
+.modal-cookie-icon { font-size: 48px; margin-bottom: 10px; }
+.modal-header h2 {
+    font-family: var(--font-body); font-weight: 800;
+    font-size: 26px; color: var(--charcoal); margin-bottom: 6px;
+}
+.modal-subtitle { font-size: 14px; color: #7a7a90; }
+
+/* Badge de ID de Orden */
+.modal-order-id-badge {
+    display: flex; flex-direction: column; align-items: center;
+    background: linear-gradient(135deg, #FFF5E4, #FFF0F5);
+    border: 2px dashed var(--caramel);
+    border-radius: var(--radius-md);
+    padding: 14px 20px; margin-bottom: 20px; text-align: center;
+}
+.modal-order-id-badge--success {
+    background: linear-gradient(135deg, #E8F8EE, #F0FFF4);
+    border-color: #25D366;
+}
+.badge-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: #9a9ab0; text-transform: uppercase; margin-bottom: 4px; }
+.badge-value { font-size: 22px; font-weight: 800; color: var(--caramel); font-family: monospace; letter-spacing: 2px; }
+.modal-order-id-badge--success .badge-value { color: #1eb855; }
+
+/* Nombre del cliente */
+.modal-client-row {
+    display: flex; align-items: center; gap: 8px;
+    font-weight: 700; font-size: 15px; color: var(--charcoal);
+    background: var(--cream); border-radius: var(--radius-sm);
+    padding: 10px 16px; margin-bottom: 16px;
+}
+
+/* Lista de items */
+.modal-items-list { margin-bottom: 20px; }
+.modal-order-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(197,196,232,0.25);
+    font-size: 14px; color: var(--charcoal);
+}
+.modal-order-row:last-child { border-bottom: none; }
+.modal-order-flavor { color: #5a5a72; }
+.modal-order-flavor strong { color: var(--charcoal); }
+.modal-order-price { font-weight: 800; color: var(--caramel-dark); }
+
+/* Totales */
+.modal-totals {
+    background: var(--cream-dark); border-radius: var(--radius-sm);
+    padding: 16px 20px; margin-bottom: 20px;
+}
+.modal-total-row {
+    display: flex; justify-content: space-between;
+    font-size: 14px; font-weight: 600; color: #5a5a72;
+    padding: 4px 0;
+}
+.modal-total-price-row { margin-top: 8px; border-top: 1px solid rgba(197,196,232,0.4); padding-top: 10px; }
+.modal-price-highlight { font-size: 20px; font-weight: 800; color: var(--charcoal); }
+
+/* Nota de WhatsApp */
+.modal-wa-note {
+    font-size: 13px; color: #7a7a90; text-align: center;
+    margin-bottom: 24px; font-weight: 600;
+}
+
+/* Acciones */
+.modal-actions { display: flex; gap: 12px; }
+.modal-btn-cancel { flex: 1; justify-content: center; }
+.modal-btn-confirm { flex: 2; justify-content: center; background: #25D366; box-shadow: 0 4px 14px rgba(37,211,102,0.35); }
+.modal-btn-confirm:hover { background: #1eb855; }
+
+/* Modal de Éxito */
+.modal-card--success { text-align: center; }
+.modal-success-icon { font-size: 56px; margin-bottom: 12px; }
+.modal-card--success h2 { color: #1eb855; }
+.modal-success-note {
+    font-size: 14px; color: #5a5a72; line-height: 1.7;
+    margin: 20px 0 28px;
+}
+
+@media (max-width: 900px) {
+    .modal-card { padding: 28px 20px; }
+    .modal-actions { flex-direction: column-reverse; }
+    .modal-btn-cancel, .modal-btn-confirm { flex: unset; width: 100%; }
+}
+
