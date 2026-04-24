@@ -1,154 +1,198 @@
-/* ============================================================ */
-/* 🚀 RAVEN INTELLIGENCE COMPANY — SCRIPTS                      */
-/* ============================================================ */
+/* ============================================================
+   MATTY'S COOKIE — Script v2.0
+   Flujo: Formulario → Modal de Preconfirmación → n8n + WhatsApp
+   ============================================================ */
 
-// ------------------------------------------------------------------
-// CONFIGURACIÓN DE INTEGRACIÓN: Webhook de N8N (Automatización de Leads)
-// Instrucciones: Reemplazar la URL abajo por la de tu webhook de producción
-// ------------------------------------------------------------------
-const WEBHOOK_URL = 'https://hook.n8n.tu-dominio.com/webhook/raven-leads';
+// Número de WhatsApp de Matty's Cookie (sin + ni espacios)
+const WA_NUMBER = '5491126949587';
 
+// ── Generador de ID de Orden ──────────────────────────────────
+function generateOrderId() {
+    const now = new Date();
+    const dd   = String(now.getDate()).padStart(2, '0');
+    const mm   = String(now.getMonth() + 1).padStart(2, '0');
+    const rand = Math.floor(1000 + Math.random() * 9000); // 4 dígitos
+    return `MC-${dd}${mm}-${rand}`;
+}
+
+// ── Variables de estado del pedido actual ─────────────────────
+let _pedidoData    = null;
+let _mensajeDuena  = null;
+let _orderId       = null;
+
+// ── Esperar DOM ───────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --- 1. NAVBAR SCROLL EFFECT --- */
+    /* --- Navbar scroll effect --- */
     const navbar = document.getElementById('navbar');
-    
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    /* --- Lógica de Contadores (Carrito) --- */
+    document.querySelectorAll('.btn-minus').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = document.getElementById(btn.dataset.target);
+            let val = parseInt(input.value) || 0;
+            if (val > 0) input.value = val - 1;
+        });
+    });
+
+    document.querySelectorAll('.btn-plus').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = document.getElementById(btn.dataset.target);
+            let val = parseInt(input.value) || 0;
+            input.value = val + 1;
+        });
+    });
+
+    /* ─────────────────────────────────────────────────────────
+       FORMULARIO → abre Modal de Preconfirmación
+    ───────────────────────────────────────────────────────── */
+    const form = document.getElementById('whatsapp-order-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const inputs = [...document.querySelectorAll('.qty-input')];
+        let totalGalletas = 0;
+        let totalPrecio   = 0;
+        let lineasPedido  = [];
+        let lineasHTML    = '';
+
+        inputs.forEach(input => {
+            const qty = parseInt(input.value) || 0;
+            if (qty > 0) {
+                totalGalletas += qty;
+                const flavor    = input.dataset.flavor;
+                const price     = parseInt(input.dataset.price) || 0;
+                const subtotal  = qty * price;
+                totalPrecio    += subtotal;
+
+                const printPrice    = new Intl.NumberFormat('es-AR').format(price);
+                const printSubtotal = new Intl.NumberFormat('es-AR').format(subtotal);
+
+                lineasPedido.push(`• ${qty}x ${flavor} ($${printPrice} c/u = $${printSubtotal})`);
+                lineasHTML += `
+                    <div class="modal-order-row">
+                        <span class="modal-order-flavor">${qty}× <strong>${flavor}</strong></span>
+                        <span class="modal-order-price">$${printSubtotal}</span>
+                    </div>`;
+            }
+        });
+
+        if (totalGalletas === 0) {
+            alert('🍪 Por favor seleccioná al menos una galleta para armar tu pedido.');
+            return;
         }
+
+        const printTotal   = new Intl.NumberFormat('es-AR').format(totalPrecio);
+        const customerName = document.getElementById('customer-name').value.trim();
+        let   customerPhone = document.getElementById('customer-phone').value.trim();
+
+        // Normalizar teléfono
+        customerPhone = customerPhone.replace(/[^\d+]/g, '');
+        if (!customerPhone.startsWith('+')) customerPhone = '+' + customerPhone;
+
+        // Generar ID de Orden
+        _orderId = generateOrderId();
+
+        // Armar mensajes
+        _mensajeDuena =
+            `🆔 *Orden:* ${_orderId}\n` +
+            `¡Hola! Quiero hacer un encargo de Matty's Cookie 🙌\n\n` +
+            `*👤 Cliente:* ${customerName}\n` +
+            `*📱 WhatsApp:* ${customerPhone}\n\n` +
+            `*📝 Mi Pedido (${totalGalletas} galletas en total):*\n` +
+            lineasPedido.join('\n') +
+            `\n\n*💰 Total a pagar:* $${printTotal} ARS`;
+
+        const mensajeCliente = `¡Hola ${customerName}! 🍪 Tu orden *${_orderId}* de Matty's Cookie fue recibida. En breve nos comunicaremos para coordinar la entrega. ¡Gracias por elegirnos!`;
+
+        _pedidoData = {
+            order_id:        _orderId,
+            nombre:          customerName,
+            telefono_cliente: customerPhone,
+            mensaje_duena:   _mensajeDuena,
+            mensaje_cliente: mensajeCliente,
+            total:           `$${printTotal} ARS`,
+            galletas_total:  totalGalletas,
+            fecha:           new Date().toLocaleString()
+        };
+
+        // ── Poblar el Modal ─────────────────────────────────
+        document.getElementById('modal-order-id').textContent    = _orderId;
+        document.getElementById('modal-client-name').textContent = customerName;
+        document.getElementById('modal-items-list').innerHTML    = lineasHTML;
+        document.getElementById('modal-total-count').textContent = `${totalGalletas} galleta${totalGalletas > 1 ? 's' : ''}`;
+        document.getElementById('modal-total-price').textContent = `$${printTotal} ARS`;
+
+        // ── Mostrar Modal ───────────────────────────────────
+        document.getElementById('order-confirm-modal').classList.add('active');
     });
 
-    /* --- 2. MOBILE MENU TOGGLE --- */
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
-    const navItems = document.querySelectorAll('.nav-item');
+    /* ─────────────────────────────────────────────────────────
+       BOTÓN CONFIRMAR dentro del Modal
+    ───────────────────────────────────────────────────────── */
+    document.getElementById('modal-confirm-btn').addEventListener('click', () => {
+        if (!_pedidoData) return;
 
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            
-            // Toggle hamburger animation depending on state
-            const spans = hamburger.querySelectorAll('span');
-            if (navLinks.classList.contains('active')) {
-                spans[0].style.transform = 'translateY(7px) rotate(45deg)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+        const confirmBtn = document.getElementById('modal-confirm-btn');
+        confirmBtn.textContent = 'Enviando... ⏳';
+        confirmBtn.disabled    = true;
+
+        fetch('https://dosalumno21.app.n8n.cloud/webhook/mattys-cookie', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify(_pedidoData)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Cerrar modal de preconfirmación
+                closeModal('order-confirm-modal');
+
+                // Abrir modal de éxito
+                document.getElementById('modal-success-id').textContent = _orderId;
+                document.getElementById('order-success-modal').classList.add('active');
+
+                // Abrir WhatsApp
+                const encodedMessage = encodeURIComponent(_mensajeDuena);
+                window.open(`https://wa.me/${WA_NUMBER}?text=${encodedMessage}`, '_blank');
+
+                form.reset();
             } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
+                throw new Error('Error en el envío');
             }
-        });
-
-        // Close menu when clicking a link
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const spans = hamburger.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            });
-        });
-    }
-
-    /* --- 3. MOBILE FLIP CARDS 3D TAP --- */
-    // En mobile, el hover de CSS no funciona bien. Activamos el flip mediante tap ("click").
-    const flipCards = document.querySelectorAll('.service-card-flip');
-    
-    // Solo aplicamos a dispositivos móviles/táctiles detectando ancho de pantalla o evento touch
-    if (window.innerWidth <= 767 || ('ontouchstart' in window) || navigator.maxTouchPoints > 0) {
-        flipCards.forEach(card => {
-            card.addEventListener('click', function() {
-                // Remover clase de las demás para que solo una esté volteada a la vez (opcional)
-                flipCards.forEach(c => {
-                    if (c !== this) c.classList.remove('is-flipped');
-                });
-                
-                // Toggle en la tarjeta actual
-                this.classList.toggle('is-flipped');
-            });
-        });
-    }
-
-    /* --- 4. FORMULARIO DE CAPTACIÓN (LEAD FORM) --- */
-    const leadForm = document.getElementById('lead-form');
-    const successMsg = document.getElementById('form-success-msg');
-    const submitBtn = document.getElementById('submit-btn');
-
-    if (leadForm) {
-        leadForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Cambiar estado del botón
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span>Enviando...</span>';
-            submitBtn.classList.remove('btn-glow');
-            submitBtn.disabled = true;
-
-            // Recolectar datos
-            const formData = new FormData(leadForm);
-            const data = Object.fromEntries(formData.entries());
-            
-            // Recolectar checkboxes múltiples (servicios)
-            data.services = formData.getAll('service');
-
-            // --- INTEGRACIÓN DIRECTA A WHATSAPP (Trigger para Evolution API) ---
-            const numeroDestino = '5491173587842'; 
-            
-            const serviciosTxt = data.services.length > 0 ? data.services.join(', ') : 'No especificado aún';
-            
-            // Construimos la estructura precisa que el bot de N8N leerá al recibir el mensaje
-            const mensajeWA = `🦅 *NUEVO LEAD - RAVEN INTELLIGENCE COMPANY* 🦅\n\n` +
-                              `*Nombre:* ${data.name}\n` +
-                              `*Teléfono:* ${data.whatsapp}\n` +
-                              `*Email:* ${data.email}\n` +
-                              `*Ubicación:* ${data.location}\n` +
-                              `*Referencia:* ${data.source}\n\n` +
-                              `*Servicios de interés:*\n- ${serviciosTxt.replace(/,/g, '\n- ')}\n\n` +
-                              `*Mensaje Adicional:*\n${data.message || 'Sin mensaje'}`;
-            
-            // Codificar texto para la URL
-            const urlWhatsApp = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensajeWA)}`;
-            
-            // Redirigir al cliente a su WhatsApp
-            window.open(urlWhatsApp, '_blank');
-
-            // Mostrar estado de éxito en el formulario
-            mostrarExito();
-
-            function mostrarExito() {
-                // Restaurar botón y ocultar form visualmente o solo mostrar el mensaje
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-                submitBtn.classList.add('btn-glow');
-                
-                leadForm.reset();
-                successMsg.classList.remove('hidden');
-                
-                // Ocultar el mensaje después de 10 segundos
-                setTimeout(() => {
-                    successMsg.classList.add('hidden');
-                }, 10000);
-            }
-        });
-    }
-
-    /* --- 5. PROJECT GALLERY THUMBS --- */
-    const thumbs = document.querySelectorAll('.project-gallery-thumbs img');
-    thumbs.forEach(thumb => {
-        thumb.addEventListener('click', function() {
-            const gallery = this.closest('.project-gallery');
-            const mainImg = gallery.querySelector('.project-img');
-            
-            // Swap sources
-            const tempSrc = mainImg.src;
-            mainImg.src = this.src;
-            this.src = tempSrc;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('❌ Hubo un inconveniente al enviar tu pedido. Por favor intentá de nuevo.');
+        })
+        .finally(() => {
+            confirmBtn.textContent = 'Confirmar y Enviar Pedido';
+            confirmBtn.disabled    = false;
         });
     });
 
+    /* --- Botón cancelar Modal --- */
+    document.getElementById('modal-cancel-btn').addEventListener('click', () => {
+        closeModal('order-confirm-modal');
+    });
+
+    /* --- Cerrar modal de éxito --- */
+    document.getElementById('modal-success-close').addEventListener('click', () => {
+        closeModal('order-success-modal');
+    });
+
+    /* --- Cerrar al hacer click en el overlay --- */
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeModal(overlay.id);
+        });
+    });
 });
+
+function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+}
