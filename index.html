@@ -1,391 +1,596 @@
-<!-- v1.0.1 - Matty's Cookie Deployment -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matty's Cookie | Galletas Artesanales Premium</title>
-    <meta name="description" content="Matty's Cookie — Auténticas galletas estilo New York: enormes, gorditas, gooey por dentro y con toppings premium. Armá tu Box de 3 y pedí por WhatsApp.">
+    <title>RAVEN INTELLIGENCE COMPANY | Data Business</title>
+    <meta name="description" content="Transformamos datos en decisiones estratégicas. Dashboards ejecutivos, automatización con IA y análisis de datos.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo_icon.png" type="image/png">
+    
+    <!-- Fonts: Plus Jakarta Sans + Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <!-- ============================================================ -->
-    <!-- NAVBAR                                                        -->
+    <!-- SECCIÓN: NAVBAR — Para editar: links y CTA del top menu       -->
     <!-- ============================================================ -->
     <nav class="navbar" id="navbar">
-        <div class="logo-container">
-            <img src="./assets/mattys_cookie_logo_ny.png" alt="Matty's Cookie" class="brand-logo">
+        <div class="nav-container">
+            <a href="#" class="logo-link">
+                <!-- Nuevo logotipo 3D -->
+                <img src="images/logo_raven_premium.png" alt="Raven Intelligence Company" class="nav-logo" onerror="this.outerHTML='<span class=\'logo-icon-fallback\'>🦅</span>'">
+            </a>
+
+            <!-- Nombre de la empresa entre logo e índice -->
+            <a href="#" class="nav-brand-name">
+                <span class="brand-raven">RAVEN</span>
+                <span class="brand-intelligence">INTELLIGENCE COMPANY</span>
+            </a>
+            
+            <div class="nav-links" id="nav-links">
+                <a href="#hero" class="nav-item">Inicio</a>
+                <a href="#servicios" class="nav-item">Servicios</a>
+                <a href="#proyectos" class="nav-item">Proyectos</a>
+                <a href="#sobre-mi" class="nav-item">Sobre Mí</a>
+                <a href="#contacto" class="nav-item">Contacto</a>
+            </div>
+
+            <div class="nav-cta-wrapper">
+                <a href="#contact-section" class="btn btn-outline nav-cta">Solicitar Consulta</a>
+                <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
-        <ul class="nav-links">
-            <li><a href="#hero">Inicio</a></li>
-            <li><a href="#about">Nosotros</a></li>
-            <li><a href="#menu">Sabores</a></li>
-            <li><a href="#order-box">Armar Pedido</a></li>
-        </ul>
-        <a href="#order-box" class="btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 9a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M12 16a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M16.5 10a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M10.5 13a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M15 14a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/></svg>
-            Hacer Pedido
-        </a>
     </nav>
 
     <!-- ============================================================ -->
-    <!-- HERO                                                          -->
+    <!-- SECCIÓN: HERO — Para editar: actualizar métricas y CTAs según crecimiento -->
     <!-- ============================================================ -->
-    <header id="hero" class="hero-section">
-        <div class="hero-content">
-            <div class="hero-badge">✨ Horneadas al momento</div>
-            <h1>Galletas <span>Enormes</span>,<br>Sabor <span>Increíble</span>.</h1>
-            <p>Auténticas galletas estilo New York: extra gruesas, crujientes por fuera y con un centro extra gooey (suave y derretido). Recién horneadas y listas para disfrutar.</p>
-            <div class="hero-actions">
-                <a href="#order-box" class="btn-primary btn-large">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 9a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M12 16a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M16.5 10a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M10.5 13a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M15 14a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/></svg>
-                    Armar mi Pedido
-                </a>
-                <a href="#menu" class="btn-secondary">Ver Sabores</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat"><span>100%</span> Artesanal</div>
-                <div class="stat-sep">·</div>
-                <div class="stat"><span>XL</span> Tamaño</div>
-                <div class="stat-sep">·</div>
-                <div class="stat"><span>24h</span> Frescas</div>
-            </div>
-        </div>
-        <!-- BOX de galletas en CSS puro -->
-        <div class="hero-image-container">
-            <img src="./assets/ny_cookie_box_hero.png" alt="Caja de Galletas New York de Matty's Cookie" class="hero-box-img floating">
-        </div>
-    </header>
-
-    <!-- ============================================================ -->
-    <!-- ABOUT                                                         -->
-    <!-- ============================================================ -->
-    <section id="about" class="about-section">
-        <div class="about-inner">
-            <img src="./assets/mattys_cookie_logo_ny.png" alt="Matty's Cookie" class="about-icon-img">
-            <h2>El Estilo <em>Matty's Cookie</em></h2>
-            <p>Traemos la auténtica experiencia neoyorquina a tus manos. Cada galleta es extra gruesa, robusta y horneada a la perfección para mantener un centro suave y húmedo, logrando ese equilibrio ideal entre crocante y derretido en cada bocado.</p>
-            <div class="values-row">
-                <div class="value-card">
-                    <span style="color: var(--caramel); display: flex; justify-content: center;">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-                    </span>
-                    <h4>Ingredientes reales</h4>
-                    <p>Sin conservantes. Solo lo mejor.</p>
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">🦅</span> Data · Analytics · AI Automation
                 </div>
-                <div class="value-card">
-                    <span style="color: var(--caramel); display: flex; justify-content: center;">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-                    </span>
-                    <h4>Horneadas al pedido</h4>
-                    <p>Tu box recién sacado del horno.</p>
+                <h1 class="hero-title">Transformamos Datos en <span class="text-gradient">Decisiones Estratégicas</span></h1>
+                <p class="hero-subtitle">Dashboards ejecutivos, automatización con IA y análisis de datos para empresas que quieren crecer con evidencia, no con intuición.</p>
+                
+                <div class="hero-actions">
+                    <a href="#contact-section" class="btn btn-primary btn-glow">Solicitar Consulta Gratuita</a>
+                    <a href="#proyectos" class="btn btn-outline">Ver Proyectos</a>
                 </div>
-                <div class="value-card">
-                    <span style="color: var(--caramel); display: flex; justify-content: center;">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
-                    </span>
-                    <h4>Sabores únicos</h4>
-                    <p>Tú armás tu pedido a medida.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- MENÚ DE SABORES                                               -->
-    <!-- ============================================================ -->
-    <section id="menu" class="menu-section">
-        <div class="section-header">
-            <h2 class="section-title">Nuestros Sabores</h2>
-            <p class="section-sub">Explorá nuestro menú y armá tu pedido con las cantidades que desees</p>
-        </div>
-
-        <div class="menu-grid">
-            <div class="menu-item">
-                <div class="menu-img-wrap">
-                    <img src="./assets/cookie_real/sin%20fondo/red_velvet-removebg-preview.png" alt="Red-Velvet" class="real-cookie-img">
-                </div>
-                <div class="menu-info">
-                    <h3>Red-Velvet</h3>
-                    <p>Base de Red-Velvet, chips de chocolate blanco y relleno de queso crema.</p>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-img-wrap">
-                    <img src="./assets/cookie_real/sin%20fondo/cookie_cream-removebg-preview.png" alt="Cookie Cream" class="real-cookie-img">
-                </div>
-                <div class="menu-info">
-                    <h3>Cookie Cream</h3>
-                    <p>Base de vainilla, chips de chocolate negro, galletas Oreo y frosting de Oreo.</p>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-img-wrap">
-                    <img src="./assets/cookie_real/sin%20fondo/choco_avellana-removebg-preview.png" alt="Choco Avellana" class="real-cookie-img">
-                </div>
-                <div class="menu-info">
-                    <h3>Choco Avellana</h3>
-                    <p>Base de chocolate, avellanas y rellena de Nutella.</p>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-img-wrap">
-                    <img src="./assets/cookie_real/sin%20fondo/chips_clasica-removebg-preview.png" alt="Chips Clásica" class="real-cookie-img">
-                </div>
-                <div class="menu-info">
-                    <h3>Chips Clásica</h3>
-                    <p>Base de vainilla con chips y rellena de chocolate.</p>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-img-wrap">
-                    <img src="./assets/cookie_real/sin%20fondo/coquito-removebg-preview.png" alt="Coquito" class="real-cookie-img">
-                </div>
-                <div class="menu-info">
-                    <h3>Coquito</h3>
-                    <p>Base de coco, chips blancos y rellena de coco con dulce de leche.</p>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-img-wrap">
-                    <img src="./assets/cookie_real/sin%20fondo/pistacho-removebg-preview.png" alt="Pistacho" class="real-cookie-img">
-                </div>
-                <div class="menu-info">
-                    <h3>Pistacho</h3>
-                    <p>Base de pistacho, frutos de pistacho y crema de pistacho.</p>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-img-wrap">
-                    <img src="./assets/cookie_real/sin%20fondo/peanuts_nuts-removebg-preview.png" alt="Peanuts-Nuts" class="real-cookie-img">
-                </div>
-                <div class="menu-info">
-                    <h3>Peanuts-Nuts</h3>
-                    <p>Base de vainilla, mantequilla de maní, chips blancos, ganache de chocolate, maní y nueces.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- CONFIGURADOR BOX DE 3                                         -->
-    <!-- ============================================================ -->
-    <section id="order-box" class="order-section">
-        <div class="section-header">
-            <h2 class="section-title" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--caramel);"><circle cx="12" cy="12" r="10"/><path d="M7.5 9a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M12 16a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M16.5 10a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M10.5 13a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/><path d="M15 14a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/></svg>
-                Armá tu Pedido
-            </h2>
-            <p class="section-sub">Elegí el sabor y la cantidad de galletas que quieras. Las recibís recién horneadas en nuestra caja premium.</p>
-        </div>
-
-        <form id="whatsapp-order-form" name="Order">
-
-            <div class="customer-info-grid">
-                <div class="input-group">
-                    <label for="customer-name">Nombre Completo</label>
-                    <input type="text" id="customer-name" name="Nombre" placeholder="Tu nombre..." required>
-                </div>
-                <div class="input-group">
-                    <label for="customer-phone">WhatsApp / Celular</label>
-                    <input type="tel" id="customer-phone" name="WhatsApp" placeholder="54911..." required>
+                
+                <div class="hero-social">
+                    <a href="https://wa.me/5491173587842" target="_blank" class="social-icon" aria-label="WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </a>
+                    <a href="mailto:dataanalystja@gmail.com" class="social-icon" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                    </a>
                 </div>
             </div>
             
-            <div class="cart-builder">
-                <!-- Sabor 1 -->
-                <div class="flavor-row">
-                    <div class="flavor-info">
-                        <h3>Red-Velvet</h3>
-                        <p>$5.000 ARS</p>
-                    </div>
-                    <div class="flavor-controls">
-                        <button type="button" class="qty-btn btn-minus" data-target="qty-red-velvet">−</button>
-                        <input type="number" id="qty-red-velvet" class="qty-input" value="0" min="0" readonly data-flavor="Red-Velvet" data-price="5000">
-                        <button type="button" class="qty-btn btn-plus" data-target="qty-red-velvet">+</button>
-                    </div>
-                </div>
-
-                <!-- Sabor 2 -->
-                <div class="flavor-row">
-                    <div class="flavor-info">
-                        <h3>Cookie Cream</h3>
-                        <p>$5.000 ARS</p>
-                    </div>
-                    <div class="flavor-controls">
-                        <button type="button" class="qty-btn btn-minus" data-target="qty-cookie-cream">−</button>
-                        <input type="number" id="qty-cookie-cream" class="qty-input" value="0" min="0" readonly data-flavor="Cookie Cream" data-price="5000">
-                        <button type="button" class="qty-btn btn-plus" data-target="qty-cookie-cream">+</button>
-                    </div>
-                </div>
-
-                <!-- Sabor 3 -->
-                <div class="flavor-row">
-                    <div class="flavor-info">
-                        <h3>Choco Avellana</h3>
-                        <p>$6.000 ARS</p>
-                    </div>
-                    <div class="flavor-controls">
-                        <button type="button" class="qty-btn btn-minus" data-target="qty-choco-avellana">−</button>
-                        <input type="number" id="qty-choco-avellana" class="qty-input" value="0" min="0" readonly data-flavor="Choco Avellana" data-price="6000">
-                        <button type="button" class="qty-btn btn-plus" data-target="qty-choco-avellana">+</button>
-                    </div>
-                </div>
-
-                <!-- Sabor 4 -->
-                <div class="flavor-row">
-                    <div class="flavor-info">
-                        <h3>Chips Clásica</h3>
-                        <p>$5.000 ARS</p>
-                    </div>
-                    <div class="flavor-controls">
-                        <button type="button" class="qty-btn btn-minus" data-target="qty-clasica">−</button>
-                        <input type="number" id="qty-clasica" class="qty-input" value="0" min="0" readonly data-flavor="Chips Clásica" data-price="5000">
-                        <button type="button" class="qty-btn btn-plus" data-target="qty-clasica">+</button>
-                    </div>
-                </div>
-
-
-
-                <!-- Sabor 6 -->
-                <div class="flavor-row">
-                    <div class="flavor-info">
-                        <h3>Coquito</h3>
-                        <p>$5.000 ARS</p>
-                    </div>
-                    <div class="flavor-controls">
-                        <button type="button" class="qty-btn btn-minus" data-target="qty-coquito">−</button>
-                        <input type="number" id="qty-coquito" class="qty-input" value="0" min="0" readonly data-flavor="Coquito" data-price="5000">
-                        <button type="button" class="qty-btn btn-plus" data-target="qty-coquito">+</button>
-                    </div>
-                </div>
-
-                <!-- Sabor 7 -->
-                <div class="flavor-row">
-                    <div class="flavor-info">
-                        <h3>Pistacho</h3>
-                        <p>$6.000 ARS</p>
-                    </div>
-                    <div class="flavor-controls">
-                        <button type="button" class="qty-btn btn-minus" data-target="qty-pistacho">−</button>
-                        <input type="number" id="qty-pistacho" class="qty-input" value="0" min="0" readonly data-flavor="Pistacho" data-price="6000">
-                        <button type="button" class="qty-btn btn-plus" data-target="qty-pistacho">+</button>
-                    </div>
-                </div>
-
-                <!-- Sabor 8 -->
-                <div class="flavor-row">
-                    <div class="flavor-info">
-                        <h3>Peanuts-Nuts</h3>
-                        <p>$5.000 ARS</p>
-                    </div>
-                    <div class="flavor-controls">
-                        <button type="button" class="qty-btn btn-minus" data-target="qty-peanuts">−</button>
-                        <input type="number" id="qty-peanuts" class="qty-input" value="0" min="0" readonly data-flavor="Peanuts-Nuts" data-price="5000">
-                        <button type="button" class="qty-btn btn-plus" data-target="qty-peanuts">+</button>
-                    </div>
-                </div>
+            <div class="hero-visual-wrapper">
+                <div class="visual-glow"></div>
+                <!-- Imagen Hero principal -->
+                <img src="images/hero_visual.png" alt="Futuristic Data Analytics Network" class="hero-visual-image float-anim" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800'">
+                
+                <!-- Glass Cards Flotantes eliminadas por petición -->
             </div>
-
-            <div class="submit-container">
-                <p class="order-note">✅ Completá tu pedido seleccionando las galletas deseadas, y comunicate con nosotros</p>
-                <button type="submit" class="btn-primary btn-large whatsapp-btn" id="submit-btn">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                    Enviar Pedido por WhatsApp
-                </button>
-            </div>
-        </form>
+        </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- FOOTER                                                        -->
+    <!-- SECCIÓN: SOCIAL PROOF — Para editar: herramientas/badges soportadas -->
+    <!-- ============================================================ -->
+    <section class="social-proof">
+        <div class="container text-center">
+            <p class="social-proof-title">Herramientas y plataformas con las que trabajamos</p>
+            <div class="partners-grid">
+                <div class="partner-badge">Power BI</div>
+                <div class="partner-badge">Looker Studio</div>
+                <div class="partner-badge">Python</div>
+                <div class="partner-badge">N8N</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN: SERVICIOS — Para editar: agregar/editar cards aquí. Estructura modular. -->
+    <!-- ============================================================ -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">¿Qué podemos hacer por tu empresa?</h2>
+                <p class="section-subtitle">Soluciones de datos adaptadas a tu industria y objetivos</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card-flip">
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="card-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400');"></div>
+                            <h3 class="card-title">📊 Dashboards Estratégicos</h3>
+                            <div class="card-tags">
+                                <span class="tag">Power BI</span>
+                                <span class="tag">DAX</span>
+                                <span class="tag">KPIs</span>
+                            </div>
+                        </div>
+                        <div class="service-card-back">
+                            <h3 class="card-title-back">Dashboards Estratégicos</h3>
+                            <p class="card-desc">Tableros ejecutivos en Power BI con KPIs personalizados para monitorear el rendimiento en tiempo real.</p>
+                            <a href="#contact-section" class="btn btn-outline btn-sm mt-auto">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="service-card-flip">
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="card-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=400');"></div>
+                            <h3 class="card-title">🐍 Análisis con Python</h3>
+                            <div class="card-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Pandas</span>
+                                <span class="tag">EDA</span>
+                            </div>
+                        </div>
+                        <div class="service-card-back">
+                            <h3 class="card-title-back">Análisis con Python</h3>
+                            <p class="card-desc">Análisis exploratorio, modelos estadísticos y visualizaciones avanzadas para extraer insights accionables.</p>
+                            <a href="#contact-section" class="btn btn-outline btn-sm mt-auto">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="service-card-flip">
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="card-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400');"></div>
+                            <h3 class="card-title">🤖 Automatización con IA</h3>
+                            <div class="card-tags">
+                                <span class="tag">N8N</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">Workflows</span>
+                            </div>
+                        </div>
+                        <div class="service-card-back">
+                            <h3 class="card-title-back">Automatización con IA</h3>
+                            <p class="card-desc">Flujos automatizados con N8N e IA para eliminar tareas repetitivas y escalar operaciones.</p>
+                            <a href="#contact-section" class="btn btn-outline btn-sm mt-auto">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 4 -->
+                <div class="service-card-flip">
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="card-img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400');"></div>
+                            <h3 class="card-title">🔍 Business Intelligence</h3>
+                            <div class="card-tags">
+                                <span class="tag">SQL</span>
+                                <span class="tag">Modelado</span>
+                                <span class="tag">BI</span>
+                            </div>
+                        </div>
+                        <div class="service-card-back">
+                            <h3 class="card-title-back">Business Intelligence</h3>
+                            <p class="card-desc">Datos crudos en reportes estratégicos para toma de decisiones a nivel directivo y operativo.</p>
+                            <a href="#contact-section" class="btn btn-outline btn-sm mt-auto">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN: PROYECTOS DESTACADOS — Para editar: reemplazar placeholders con proyectos reales. Agregar más cards duplicando la estructura. -->
+    <!-- ============================================================ -->
+    <section class="projects" id="proyectos">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Proyectos que Generaron Impacto Real</h2>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Proyecto 1 (Real) -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="images/project_aragua.png" alt="Dashboard de Rendimiento Deportivo" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&q=80&w=600'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Deportes</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                        <h3 class="project-title">Dashboard de Rendimiento Deportivo</h3>
+                        <p class="project-desc">Sistema de seguimiento de indicadores para atletas del Instituto de Deporte del Estado Aragua. Análisis comparativo interanual y entre estados.</p>
+                        <div class="project-result text-gradient">
+                            🏆 Top 10 Nacional 2024 — 7° lugar entre 24 estados (primer ingreso en 17 años)
+                        </div>
+                        <p class="project-tools"><strong>Herramientas:</strong> Power BI · Excel · FileMaker</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 (Power BI Coderhouse) -->
+                <div class="project-card">
+                    <div class="project-img-wrapper" style="overflow: auto;">
+                        <div class="project-gallery">
+                            <img src="images/alter_bridge_1.png" alt="Dashboard Alter Bridge - General" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600'">
+                            <div class="project-gallery-thumbs">
+                                <img src="images/alter_bridge_2.png" alt="Dashboard Detalle 1" onerror="this.style.display='none'">
+                                <img src="images/alter_bridge_3.png" alt="Dashboard Detalle 2" onerror="this.style.display='none'">
+                                <img src="images/alter_bridge_4.png" alt="Dashboard Detalle 3" onerror="this.style.display='none'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Coderhouse</span>
+                        </div>
+                        <h3 class="project-title">Análisis de Desempeño: Alter Bridge</h3>
+                        <p class="project-desc">Extracción y análisis de 50.952 registros sobre rentabilidad y reproducción musical. Dashboard interactivo con proyección a futuro mediante IA para sugerir decisiones en su próximo lanzamiento discográfico.</p>
+                        <div class="project-result text-gradient">
+                            Top 1° Proyecto — Cohorte Data Analytics
+                        </div>
+                        <p class="project-tools"><strong>Herramientas:</strong> Power BI, ChatGPT (Generación Dataset sintético)</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 (AI Automation) -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="images/motostore_workflow.png" alt="Workflow N8N MotoStore Aragua" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">AI Automation</span>
+                            <span class="tag">N8N</span>
+                            <span class="tag">Coderhouse</span>
+                        </div>
+                        <h3 class="project-title">Automatización de Consultas: MotoStore Aragua</h3>
+                        <p class="project-desc">Construcción de un workflow funcional de automatización inteligente integrado para la atención comercial (consulta de horario mundial y respuestas ágiles) en MotoStore Aragua.</p>
+                        <div class="project-result text-gradient">
+                            Top Proyecto Práctico — AI Automation
+                        </div>
+                        <p class="project-tools"><strong>Herramientas:</strong> N8N, Integración de APIs, ChatGPT</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 4: App English -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=600" alt="App English Interactive" class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Training</span>
+                            <span class="tag">Education</span>
+                        </div>
+                        <h3 class="project-title">App English: Formación Interactiva</h3>
+                        <p class="project-desc">Plataforma modular para el aprendizaje autodidacta del inglés, enfocada en la agilidad y el uso de recursos multimedia integrados.</p>
+                        <div class="project-result text-gradient">
+                            Implementación de sistema ágil para formación interna.
+                        </div>
+                        <p class="project-tools"><strong>Herramientas:</strong> JavaScript, HTML5, CSS3, JSON</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 5: Del-Boccio -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="images/project_delboccio.jpg" alt="Del-Boccio Transformación Digital" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=600'">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Logística</span>
+                            <span class="tag">B2B</span>
+                        </div>
+                        <h3 class="project-title">Transformación Digital: Del-Boccio</h3>
+                        <p class="project-desc">Digitalización integral de catálogo comercial y optimización de flujos de venta para agencia de importaciones masivas.</p>
+                        <div class="project-result text-gradient">
+                            Automatización de activos y consulta de stock digital.
+                        </div>
+                        <p class="project-tools"><strong>Herramientas:</strong> Catálogo Digital, N8N, Digital Assets</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 6: Matty's Cookie -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=600" alt="Matty's Cookie Automation" class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">E-commerce</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                        <h3 class="project-title">Automatización de Ventas: Matty's Cookie</h3>
+                        <p class="project-desc">Landing page premium para venta de galletas artesanales con sistema de pre-order automatizado y flujo directo a WhatsApp.</p>
+                        <div class="project-result text-gradient">
+                            Lanzamiento de campaña pre-venta con flujo 100% automatizado.
+                        </div>
+                        <p class="project-tools"><strong>Herramientas:</strong> Webflow/HTML, WhatsApp API, Netlify</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN: SOBRE MÍ — Para editar: actualizar bio, habilidades y timeline aquí -->
+    <!-- ============================================================ -->
+    <section class="about" id="sobre-mi">
+        <div class="container">
+            <div class="about-grid">
+                
+                <div class="about-visual">
+                    <div class="profile-glow"></div>
+                    <img src="images/jesus_arcia.jpg" alt="Ing. Jesús Manuel Arcia" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400'">
+                    <div class="profile-badge">🦅 Fundador & Lead Analyst</div>
+                    
+                    <div class="profile-social">
+                        <a href="https://wa.me/5491173587842" target="_blank" class="social-icon" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
+                        <a href="mailto:dataanalystja@gmail.com" class="social-icon" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <h2 class="about-name">Ing. Jesús Manuel Arcia</h2>
+                    <h3 class="about-role text-gradient">Data Analyst · Business Intelligence · Strategic Leadership</h3>
+                    
+                    <div class="about-bio">
+                        <p>Ingeniero con más de 20 años de experiencia en liderazgo estratégico y gestión de equipos en entornos de alta presión. Egresado Top 10 (1° lugar) en Data Analytics por Coderhouse Argentina.</p>
+                        <p>Especializado en transformar datos complejos en insights accionables mediante dashboards ejecutivos, análisis de KPIs y automatización con IA. Actualmente profundizando en Python para Data Science y AI Automation con N8N.</p>
+                        <p>Mi formación militar me dio algo que pocas personas tienen en el mundo de los datos: disciplina de ejecución, pensamiento bajo presión y visión estratégica de largo plazo.</p>
+                    </div>
+
+                    <div class="skills-container">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">DAX</span>
+                        <span class="skill-tag">Excel Avanzado</span>
+                        <span class="skill-tag">Modelado de Datos</span>
+                        <span class="skill-tag">Python (en formación)</span>
+                        <span class="skill-tag">N8N AI Automation (en formación)</span>
+                        <span class="skill-tag">Liderazgo Estratégico</span>
+                        <span class="skill-tag">KPI Design</span>
+                        <span class="skill-tag">Benchmarking</span>
+                        <span class="skill-tag">EDA</span>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2004–2022</div>
+                            <div class="timeline-text">Fuerza Armada Nacional — Liderazgo y RRHH</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2023–2025</div>
+                            <div class="timeline-text">Instituto Deporte Aragua — Data Analyst</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2025–2026</div>
+                            <div class="timeline-text">Coderhouse — Top 1° Data Analytics</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2026</div>
+                            <div class="timeline-text">Formación: Python para Data Science (Talento Tech) — En curso</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2026</div>
+                            <div class="timeline-text">Especialización AI Automation (Coderhouse) — En curso</div>
+                        </div>
+                        <div class="timeline-item timeline-active">
+                            <div class="timeline-dot glow"></div>
+                            <div class="timeline-date">2026</div>
+                            <div class="timeline-text text-gradient">Raven Intelligence Company — Fundación</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN: FORMULARIO DE CAPTACIÓN Y CONTACTO DIRECTO -->
+    <!-- Para editar: cambiar WEBHOOK_URL en script.js al integrar N8N y actualizar info -->
+    <!-- ============================================================ -->
+    <section class="contact-section" id="contacto">
+        <div class="container" id="contact-section">
+            <div class="contact-grid">
+                
+                <!-- Columna Izquierda: Formulario -->
+                <div class="contact-form-wrapper">
+                    <h2 class="form-title">Hablemos de tu Proyecto</h2>
+                    <p class="form-subtitle">Completá el formulario y te contactaremos en menos de 24hs para coordinar una primera reunión sin cargo.</p>
+                    
+                    <form id="lead-form" class="lead-form">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" required placeholder="Ej. Juan Pérez">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp (con código de país)</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+54 9 11 xxxxxxxx">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email corporativo o personal</label>
+                                <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="location">Ubicación (Ciudad/País)</label>
+                                <input type="text" id="location" name="location" required placeholder="Ej. GABA Pilar, Argentina">
+                            </div>
+                            <div class="form-group">
+                                <label for="source">¿Cómo conociste Raven?</label>
+                                <div class="select-wrapper">
+                                    <select id="source" name="source" required>
+                                        <option value="" disabled selected>Seleccioná una opción...</option>
+                                        <option value="Google">Búsqueda en Google</option>
+                                        <option value="LinkedIn">LinkedIn</option>
+                                        <option value="Recomendacion">Recomendación</option>
+                                        <option value="Redes Sociales">Redes Sociales</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Servicio que necesitás</label>
+                            <div class="checkbox-grid">
+                                <div class="checkbox-item"><input type="checkbox" id="srv-dash" name="service" value="Dashboards"><label for="srv-dash">Dashboards Estratégicos</label></div>
+                                <div class="checkbox-item"><input type="checkbox" id="srv-py" name="service" value="Python"><label for="srv-py">Análisis con Python</label></div>
+                                <div class="checkbox-item"><input type="checkbox" id="srv-ia" name="service" value="IA Automation"><label for="srv-ia">Automatización con IA</label></div>
+                                <div class="checkbox-item"><input type="checkbox" id="srv-bi" name="service" value="BI"><label for="srv-bi">Business Intelligence</label></div>
+                                <div class="checkbox-item"><input type="checkbox" id="srv-kpi" name="service" value="KPIs"><label for="srv-kpi">Diseño de KPIs</label></div>
+                                <div class="checkbox-item"><input type="checkbox" id="srv-consult" name="service" value="Consultoria"><label for="srv-consult">Consultoría de Datos</label></div>
+                                <div class="checkbox-item"><input type="checkbox" id="srv-none" name="service" value="No se aun"><label for="srv-none">No sé aún</label></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Descripción breve del proyecto (Opcional)</label>
+                            <textarea id="message" name="message" rows="3" placeholder="Contanos brevemente qué te gustaría resolver o analizar..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-glow submit-btn" id="submit-btn" style="width: 100%;">
+                            <span>Enviar y Solicitar Reunión</span>
+                        </button>
+                        
+                        <div id="form-success-msg" class="form-message success hidden">
+                            ¡Gracias! Recibirás una respuesta en menos de 24hs. Revisá también tu WhatsApp.
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Columna Derecha: Tarjetas de Contacto Directo -->
+                <div class="direct-contact-container">
+                    
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <h3 class="contact-card-title">WhatsApp</h3>
+                        <p class="contact-card-detail">+54 9 11 7358 7842</p>
+                        <p class="contact-card-note">Respuesta Lun–Vie 9–18hs ARG</p>
+                        <a href="https://wa.me/5491173587842?text=Hola%20Jesús%2C%20vi%20tu%20web%20y%20quiero%20consultar%20sobre%20tus%20servicios" target="_blank" class="btn btn-outline btn-sm w-100">Abrir WhatsApp</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                        </div>
+                        <h3 class="contact-card-title">Email</h3>
+                        <p class="contact-card-detail">dataanalystja@gmail.com</p>
+                        <p class="contact-card-note">Respondemos en menos de 24hs hábiles</p>
+                        <a href="mailto:dataanalystja@gmail.com?subject=Consulta%20desde%20RavenIntelligence.com" class="btn btn-outline btn-sm w-100">Enviar Email</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN: CTA FINAL -->
+    <!-- ============================================================ -->
+    <section class="final-cta text-center">
+        <div class="cta-overlay"></div>
+        <div class="container relative z-10">
+            <h2 class="final-cta-title">¿Listo para tomar decisiones basadas en datos?</h2>
+            <p class="final-cta-subtitle">Primera consulta sin cargo. Sin compromisos.</p>
+            <a href="#contact-section" class="btn btn-primary btn-glow btn-lg mt-4">Solicitar Mi Consulta Gratuita</a>
+            <p class="final-cta-subtext mt-4">🦅 RAVEN INTELLIGENCE COMPANY — Data Business · GABA Pilar, Buenos Aires, Argentina</p>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN: FOOTER — Para editar: actualizar links de redes sociales aquí -->
     <!-- ============================================================ -->
     <footer class="footer">
-        <div class="footer-inner">
-            <img src="./assets/mattys_cookie_logo_ny.png" alt="Matty's Cookie" class="footer-logo">
-            <p class="footer-tagline">Galletas artesanales · Horneadas al momento</p>
-            <p class="footer-copy">© 2026 Matty's Cookie · Todos los derechos reservados</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logo_raven_premium.png" alt="Raven Intelligence Company" class="footer-logo" onerror="this.outerHTML='<span class=\'logo-text-fallback\'>RAVEN INTELLIGENCE COMPANY</span>'">
+                    <p class="footer-tagline">Transformamos datos en decisiones</p>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/jesús-manuel-arcia-998890391" target="_blank" class="social-icon" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="https://github.com/jesus-arcia" target="_blank" class="social-icon" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                        <a href="https://wa.me/5491173587842" target="_blank" class="social-icon" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-heading">Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Dashboards Estratégicos</a></li>
+                        <li><a href="#servicios">Análisis con Python</a></li>
+                        <li><a href="#servicios">Automatización con IA</a></li>
+                        <li><a href="#servicios">Business Intelligence</a></li>
+                        <li><a href="#servicios">Diseño de KPIs</a></li>
+                        <li><a href="#servicios">Consultoría de Datos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-heading">Empresa</h4>
+                    <ul>
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#sobre-mi">Sobre Mí</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-heading">Contacto</h4>
+                    <ul>
+                        <li><span class="text-tertiary">WA:</span> <a href="https://wa.me/5491173587842">+54 9 11 7358 7842</a></li>
+                        <li><span class="text-tertiary">Email:</span> <a href="mailto:dataanalystja@gmail.com">dataanalystja@gmail.com</a></li>
+                        <li class="mt-2"><span class="text-tertiary text-sm">GABA Pilar, Buenos Aires<br>Argentina</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 RAVEN INTELLIGENCE COMPANY Data Business. Todos los derechos reservados. | GABA Pilar, Buenos Aires, Argentina</p>
+            </div>
         </div>
     </footer>
 
-    <!-- ============================================================ -->
-    <!-- MODAL: PRE-CONFIRMACIÓN DE PEDIDO                            -->
-    <!-- ============================================================ -->
-    <div class="modal-overlay" id="order-confirm-modal" role="dialog" aria-modal="true">
-        <div class="modal-card">
-            <div class="modal-header">
-                <div class="modal-cookie-icon">🍪</div>
-                <h2>Revisá tu Pedido</h2>
-                <p class="modal-subtitle">Confirmá los detalles antes de enviarlo</p>
-            </div>
-
-            <div class="modal-order-id-badge">
-                <span class="badge-label">N° de Orden</span>
-                <span class="badge-value" id="modal-order-id">#MC-0000-0000</span>
-            </div>
-
-            <div class="modal-client-row">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                <span id="modal-client-name">Cliente</span>
-            </div>
-
-            <div class="modal-items-list" id="modal-items-list">
-                <!-- Llenado dinámicamente por JS -->
-            </div>
-
-            <div class="modal-totals">
-                <div class="modal-total-row">
-                    <span>Total de galletas</span>
-                    <span id="modal-total-count">0 galletas</span>
-                </div>
-                <div class="modal-total-row modal-total-price-row">
-                    <span>Total a pagar</span>
-                    <span id="modal-total-price" class="modal-price-highlight">$0 ARS</span>
-                </div>
-            </div>
-
-            <p class="modal-wa-note">
-                📲 Al confirmar, se abrirá WhatsApp para enviarle el pedido a Matty's Cookie.
-            </p>
-
-            <div class="modal-actions">
-                <button class="btn-secondary modal-btn-cancel" id="modal-cancel-btn">Volver a editar</button>
-                <button class="btn-primary modal-btn-confirm" id="modal-confirm-btn">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                    Confirmar y Enviar Pedido
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- MODAL: ÉXITO — PEDIDO ENVIADO                                -->
-    <!-- ============================================================ -->
-    <div class="modal-overlay" id="order-success-modal" role="dialog" aria-modal="true">
-        <div class="modal-card modal-card--success">
-            <div class="modal-success-icon">✅</div>
-            <h2>¡Pedido Enviado!</h2>
-            <p class="modal-subtitle">Tu pedido fue registrado con éxito.</p>
-
-            <div class="modal-order-id-badge modal-order-id-badge--success">
-                <span class="badge-label">Tu número de orden</span>
-                <span class="badge-value" id="modal-success-id">#MC-0000-0000</span>
-            </div>
-
-            <p class="modal-success-note">
-                Guardá este número de orden. En breve Matty's Cookie se comunicará con vos para coordinar la entrega y el pago. 🍪
-            </p>
-
-            <button class="btn-primary" id="modal-success-close" style="width:100%; justify-content:center;">
-                Entendido, ¡gracias!
-            </button>
-        </div>
-    </div>
-
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
