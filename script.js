@@ -60,6 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
         let totalPrecio   = 0;
         let lineasPedido  = [];
         let lineasHTML    = '';
+        
+        // Objeto para el dashboard de Google Sheets
+        let desgloseSabores = {
+            "Red_Velvet": 0,
+            "Cookie_Cream": 0,
+            "Choco_Avellana": 0,
+            "Chips_Clasica": 0,
+            "Chips_Chocolate": 0,
+            "Coquito": 0,
+            "Pistacho": 0,
+            "Peanuts_Nuts": 0
+        };
 
         inputs.forEach(input => {
             const qty = parseInt(input.value) || 0;
@@ -69,6 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const price     = parseInt(input.dataset.price) || 0;
                 const subtotal  = qty * price;
                 totalPrecio    += subtotal;
+
+                // Mapear el sabor al formato del desglose
+                let flavorKey = flavor.replace(/[^a-zA-Z0-9]/g, '_');
+                if (flavor === "Chips rellena de Chocolate") flavorKey = "Chips_Chocolate";
+                if (flavor === "Chips Clásica") flavorKey = "Chips_Clasica";
+                if (flavor === "Red-Velvet") flavorKey = "Red_Velvet";
+                if (flavor === "Cookie Cream") flavorKey = "Cookie_Cream";
+                if (flavor === "Choco Avellana") flavorKey = "Choco_Avellana";
+                if (flavor === "Peanuts-Nuts") flavorKey = "Peanuts_Nuts";
+
+                desgloseSabores[flavorKey] = qty;
 
                 const printPrice    = new Intl.NumberFormat('es-AR').format(price);
                 const printSubtotal = new Intl.NumberFormat('es-AR').format(subtotal);
@@ -112,6 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const mensajeCliente = `¡Hola ${customerName}! 🍪 Tu orden *${_orderId}* de Matty's Cookie fue recibida. En breve nos comunicaremos para coordinar la entrega. ¡Gracias por elegirnos!`;
 
+        const now = new Date();
+        const fechaStr = now.toLocaleDateString();
+        const horaStr = now.toLocaleTimeString();
+
         _pedidoData = {
             order_id:        _orderId,
             nombre:          customerName,
@@ -121,7 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
             mensaje_cliente: mensajeCliente,
             total:           `$${printTotal} ARS`,
             galletas_total:  totalGalletas,
-            fecha:           new Date().toLocaleString()
+            desglose_texto:  lineasPedido.join(', '),
+            sabores:         desgloseSabores,
+            fecha:           fechaStr,
+            hora:            horaStr
         };
 
         // ── Poblar el Modal ─────────────────────────────────
