@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const printTotal   = new Intl.NumberFormat('es-AR').format(totalPrecio);
         const customerName = document.getElementById('customer-name').value.trim();
         let   customerPhone = document.getElementById('customer-phone').value.trim();
+        const customerEmail = document.getElementById('customer-email').value.trim();
 
         // Normalizar teléfono
         customerPhone = customerPhone.replace(/[^\d+]/g, '');
@@ -103,7 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
             `🆔 *Orden:* ${_orderId}\n` +
             `¡Hola! Quiero hacer un encargo de Matty's Cookie 🙌\n\n` +
             `*👤 Cliente:* ${customerName}\n` +
-            `*📱 WhatsApp:* ${customerPhone}\n\n` +
+            `*📱 WhatsApp:* ${customerPhone}\n` +
+            `*📧 Email:* ${customerEmail}\n\n` +
             `*📝 Mi Pedido (${totalGalletas} galletas en total):*\n` +
             lineasPedido.join('\n') +
             `\n\n*💰 Total a pagar:* $${printTotal} ARS`;
@@ -114,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             order_id:        _orderId,
             nombre:          customerName,
             telefono_cliente: customerPhone,
+            email:           customerEmail,
             mensaje_duena:   _mensajeDuena,
             mensaje_cliente: mensajeCliente,
             total:           `$${printTotal} ARS`,
@@ -152,15 +155,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Cerrar modal de preconfirmación
                 closeModal('order-confirm-modal');
 
-                // Abrir modal de éxito
-                document.getElementById('modal-success-id').textContent = _orderId;
-                document.getElementById('order-success-modal').classList.add('active');
+                // Llenar datos en el modal de pago
+                document.getElementById('payment-total-price').textContent = _pedidoData.total;
+                document.getElementById('payment-order-id').textContent = _orderId;
 
-                // Abrir WhatsApp
-                const encodedMessage = encodeURIComponent(_mensajeDuena);
-                window.open(`https://wa.me/${WA_NUMBER}?text=${encodedMessage}`, '_blank');
-
-                form.reset();
+                // Abrir modal de pago
+                document.getElementById('order-payment-modal').classList.add('active');
             } else {
                 throw new Error('Error en el envío');
             }
@@ -175,7 +175,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* --- Botón cancelar Modal --- */
+    /* ─────────────────────────────────────────────────────────
+       BOTONES DEL MODAL DE PAGO
+    ───────────────────────────────────────────────────────── */
+    document.getElementById('modal-whatsapp-btn').addEventListener('click', () => {
+        closeModal('order-payment-modal');
+
+        // Abrir modal de éxito
+        document.getElementById('modal-success-id').textContent = _orderId;
+        document.getElementById('order-success-modal').classList.add('active');
+
+        // Abrir WhatsApp
+        const encodedMessage = encodeURIComponent(_mensajeDuena);
+        window.open(`https://wa.me/${WA_NUMBER}?text=${encodedMessage}`, '_blank');
+
+        form.reset();
+    });
+
+    document.getElementById('modal-payment-close').addEventListener('click', () => {
+        closeModal('order-payment-modal');
+        
+        // Abrir modal de éxito igualmente
+        document.getElementById('modal-success-id').textContent = _orderId;
+        document.getElementById('order-success-modal').classList.add('active');
+        
+        form.reset();
+    });
+
+    /* --- Botón cancelar Modal Pre-confirmación --- */
     document.getElementById('modal-cancel-btn').addEventListener('click', () => {
         closeModal('order-confirm-modal');
     });
